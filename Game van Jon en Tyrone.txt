@@ -1,0 +1,36 @@
+Game van Jon en Tyrone:
+
+
+
+Gemaakt in Godot engine in 3D
+
+
+Platform shooter met muziek thema in de style van games zoals Cruelty squad/brazilian drug dealer 3.
+
+Game is in:
+
+First person.
+
+OST is niet compleet want je vindt nummers door de levels heen om de soundtrack compleet te maken (soundtrack halen we wel van youtube)
+
+Inplaats van geweren gebruiken we dingen zoals slingshots waarmee je vissen schiet die je opvist. 
+
+Jointjes, Bier, VISSEN
+
+Linear gameplay.
+
+teleporters van level naar level
+
+Government agents als vijanden
+
+Presidenten als bosses
+
+Casino level waar je NIET kan vissen, je moet gokken voor je vissen. Heb je geen vissen meer om te gokken? Dan kan je een lening nemen voor vissen die je in de game moet uitbetalen.
+
+Scientology level met tom cruise endboss aliens vijanden speedrun level
+
+
+
+
+
+
