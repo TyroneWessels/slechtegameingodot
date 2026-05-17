@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://bl3ukhslinubo"]
+
+[ext_resource type="Script" uid="uid://dv3cydtd8u3ew" path="res://scripts/player.gd" id="1_elqb8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rvslj"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_0bbpv"]
+sky_material = SubResource("ProceduralSkyMaterial_rvslj")
+
+[sub_resource type="Environment" id="Environment_rarhs"]
+background_mode = 2
+sky = SubResource("Sky_0bbpv")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_elqb8"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rvslj"]
+height = 1.4
+
+[node name="World" type="Node3D"]
+
+[node name="Stage" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(20, 1, 20)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 1.9999999, 0)
+use_collision = true
+size = Vector3(20, 1, 20)
+
+[node name="env" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="env"]
+transform = Transform3D(-0.8161522, -0.54613334, 0.18876973, 0.39150184, -0.2823547, 0.87578654, -0.42499617, 0.7886789, 0.44425654, -18.7, 19.900002, -35.9)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="env"]
+environment = SubResource("Environment_rarhs")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+script = ExtResource("1_elqb8")
+
+[node name="standing_collison_shape" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_elqb8")
+
+[node name="crouching_collison_shape" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70000005, 0)
+shape = SubResource("CapsuleShape3D_rvslj")
+disabled = true
+
+[node name="head" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player/head"]
+
+[node name="RayCast3D" type="RayCast3D" parent="Player"]
+target_position = Vector3(0, 2, 0)
