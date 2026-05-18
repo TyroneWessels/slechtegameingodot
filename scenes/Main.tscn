@@ -39,3 +39,23 @@ shadow_enabled = true
 environment = SubResource("Environment_rarhs")
 
 [node name="Player" parent="." instance=ExtResource("1_elqb8")]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15.6, -20)
+use_collision = true
+size = Vector3(20, 1, 20)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(0.8660253, 0.49999997, 0, -0.49999997, 0.8660253, 0, 0, 0, 1, -18.419218, -10.743862, -19.5)
+use_collision = true
+size = Vector3(20, 1, 5)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.284084e-08, 5.9604645e-08, -1, 4.440892e-16, 0.9999999, 4.4703484e-08, 0.9999999, 7.4392337e-09, -4.4362235e-08, -29.342255, -5.8236775, -12)
+use_collision = true
+size = Vector3(20, 1, 5)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(0.9525232, -0.30446514, 0, 0.30446514, 0.9525232, 0, 0, 0, 1, -18.892803, -3.2974901, -4.5)
+use_collision = true
+size = Vector3(19.1, 1, 5)
