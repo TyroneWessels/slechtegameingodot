@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bl3ukhslinubo"]
+[gd_scene load_steps=5 format=3 uid="uid://bl3ukhslinubo"]
 
-[ext_resource type="Script" uid="uid://dv3cydtd8u3ew" path="res://scripts/player.gd" id="1_elqb8"]
+[ext_resource type="PackedScene" uid="uid://d4m8spqlbof8g" path="res://scenes/player.tscn" id="1_elqb8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rvslj"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -14,11 +14,6 @@ background_mode = 2
 sky = SubResource("Sky_0bbpv")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_elqb8"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rvslj"]
-height = 1.4
 
 [node name="World" type="Node3D"]
 
@@ -43,22 +38,4 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="env"]
 environment = SubResource("Environment_rarhs")
 
-[node name="Player" type="CharacterBody3D" parent="."]
-script = ExtResource("1_elqb8")
-
-[node name="standing_collison_shape" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_elqb8")
-
-[node name="crouching_collison_shape" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70000005, 0)
-shape = SubResource("CapsuleShape3D_rvslj")
-disabled = true
-
-[node name="head" type="Node3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
-
-[node name="Camera3D" type="Camera3D" parent="Player/head"]
-
-[node name="RayCast3D" type="RayCast3D" parent="Player"]
-target_position = Vector3(0, 2, 0)
+[node name="Player" parent="." instance=ExtResource("1_elqb8")]
