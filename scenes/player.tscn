@@ -1,11 +1,39 @@
-[gd_scene load_steps=9 format=3 uid="uid://d4m8spqlbof8g"]
+[gd_scene load_steps=12 format=3 uid="uid://d4m8spqlbof8g"]
 
 [ext_resource type="Script" uid="uid://dv3cydtd8u3ew" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="PackedScene" uid="uid://be4ldamk6oor3" path="res://models/Slingshot.glb" id="2_g2els"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2els"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qhqgy"]
 height = 1.4
+
+[sub_resource type="Animation" id="Animation_g2els"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_3vyb7"]
 resource_name = "jump"
@@ -33,33 +61,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, -0.2, 0), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_g2els"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_qhqgy"]
@@ -126,6 +127,39 @@ _data = {
 &"roll": SubResource("Animation_dqkch")
 }
 
+[sub_resource type="Animation" id="Animation_qlg0r"]
+resource_name = "shoot"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.375, -0.29999995, -0.535), Vector3(0.145, -0.3, -0.615), Vector3(0.375, -0.29999995, -0.535)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.3228859, 1.5707964, 0), Vector3(-0.33161256, 1.7540559, 0), Vector3(-0.3228859, 1.5707964, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tuyoq"]
+_data = {
+&"shoot": SubResource("Animation_qlg0r")
+}
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_3vyb7")
 
@@ -154,3 +188,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 libraries = {
 &"": SubResource("AnimationLibrary_qhqgy")
 }
+
+[node name="Slingshot" parent="neck/head" instance=ExtResource("2_g2els")]
+transform = Transform3D(-1.7484556e-08, -0.12692186, 0.37932947, 0, 0.37932947, 0.12692186, -0.4, 5.5479306e-09, -1.6581017e-08, 0.375, -0.29999995, -0.535)
+
+[node name="Slingshot_Anim" type="AnimationPlayer" parent="neck/head/Slingshot"]
+libraries = {
+&"": SubResource("AnimationLibrary_tuyoq")
+}
+
+[node name="RayCast3D2" type="RayCast3D" parent="neck/head/Slingshot"]
+transform = Transform3D(-1.1920929e-07, 3.9115548e-08, -2.4999986, -0.7932617, 2.3708098, 4.4703484e-08, 2.3708086, 0.79326147, -1.1920929e-07, 0.14006591, 0.42615604, 0.0731715)
+target_position = Vector3(0, 0, -1)
