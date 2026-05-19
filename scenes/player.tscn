@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://d4m8spqlbof8g"]
+[gd_scene load_steps=13 format=3 uid="uid://d4m8spqlbof8g"]
 
 [ext_resource type="Script" uid="uid://dv3cydtd8u3ew" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://be4ldamk6oor3" path="res://models/Slingshot.glb" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://djw645gpgdbjt" path="res://scenes/trout.tscn" id="3_qhqgy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2els"]
 
@@ -198,5 +199,8 @@ libraries = {
 }
 
 [node name="RayCast3D2" type="RayCast3D" parent="neck/head/Slingshot"]
-transform = Transform3D(-1.1920929e-07, 3.9115548e-08, -2.4999986, -0.7932617, 2.3708098, 4.4703484e-08, 2.3708086, 0.79326147, -1.1920929e-07, 0.14006591, 0.42615604, 0.0731715)
+transform = Transform3D(-1.1920929e-07, 3.9115545e-08, -2.4999983, -0.79326177, 2.3708096, 4.470349e-08, 2.3708086, 0.79326147, -1.1920929e-07, 0.14006579, 0.33132386, 0.041440964)
 target_position = Vector3(0, 0, -1)
+
+[node name="Trout" parent="neck/head/Slingshot" instance=ExtResource("3_qhqgy")]
+transform = Transform3D(-1.0927848e-07, -5.2319257e-14, -2.4999971, -0.7932616, 2.370809, 3.4674574e-08, 2.370809, 0.7932616, -1.036313e-07, -0.08750105, 0.32803822, 0.04385352)
