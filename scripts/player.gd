@@ -10,6 +10,7 @@ extends CharacterBody3D
 @onready var camera_3d: Camera3D = $neck/head/eyes/Camera3D
 @onready var animation_player: AnimationPlayer = $neck/head/eyes/AnimationPlayer
 @onready var slingshot_anim: AnimationPlayer = $neck/head/Slingshot/Slingshot_Anim
+@onready var geo_trout: MeshInstance3D = $neck/head/Slingshot/Geo_Trout
 
 
 # Speed Variables
@@ -25,6 +26,9 @@ var sprinting = false
 var crouching = false
 var free_looking = false
 var sliding = false
+
+#Slingshot vars/states
+var ammo = 1
 
 #Slide Variables
 var slide_timer = 0.0
@@ -104,6 +108,7 @@ func _physics_process(delta: float) -> void:
 	elif !ray_cast_3d.is_colliding():
 		standing_collison_shape.disabled = false
 		crouching_collison_shape.disabled = true
+
 		
 		head.position.y = lerp(head.position.y,0.0,delta*lerp_speed)
 		# Sprint Logic
