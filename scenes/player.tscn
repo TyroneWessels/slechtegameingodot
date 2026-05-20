@@ -283,7 +283,7 @@ libraries = {
 }
 
 [node name="Slingshot" parent="neck/head" instance=ExtResource("2_g2els")]
-transform = Transform3D(-1.7484556e-08, -0.12692186, 0.37932947, 0, 0.37932947, 0.12692186, -0.4, 5.5479306e-09, -1.6581017e-08, 0.375, -0.29999995, -0.535)
+transform = Transform3D(-0.07289419, -0.12804659, 0.3718743, 0, 0.37820742, 0.13022725, -0.39330196, 0.023732027, -0.06892281, 0.14500001, -0.3, -0.615)
 
 [node name="Slingshot_Anim" type="AnimationPlayer" parent="neck/head/Slingshot"]
 libraries = {

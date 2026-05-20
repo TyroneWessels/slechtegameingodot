@@ -11,6 +11,7 @@ extends CharacterBody3D
 @onready var animation_player: AnimationPlayer = $neck/head/eyes/AnimationPlayer
 @onready var slingshot_anim: AnimationPlayer = $neck/head/Slingshot/Slingshot_Anim
 @onready var geo_trout: MeshInstance3D = $neck/head/Slingshot/Geo_Trout
+@onready var ray_cast_slingshot: RayCast3D = $neck/head/Slingshot/RayCast3D2
 
 
 # Speed Variables
@@ -29,6 +30,8 @@ var sliding = false
 
 #Slingshot vars/states
 var ammo = 1
+var bullet = load("res://scenes/trout_bullet.tscn")
+var instance
 
 #Slide Variables
 var slide_timer = 0.0
@@ -183,10 +186,16 @@ func _physics_process(delta: float) -> void:
 			animation_player.play("roll")
 		elif last_velocity.y < -4.0:
 			animation_player.play("landing")
-			
+	
+	# shooting
 	if Input.is_action_pressed("shoot"):
 		if !slingshot_anim.is_playing():
 			slingshot_anim.play("shoot")
+			await get_tree().create_timer(0.333333).timeout
+			instance = bullet.instantiate()
+			instance.position = ray_cast_slingshot.global_position
+			instance.transform.basis = ray_cast_slingshot.global_transform.basis
+			get_parent().add_child(instance)
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
