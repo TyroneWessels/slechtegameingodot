@@ -128,6 +128,33 @@ _data = {
 &"roll": SubResource("Animation_dqkch")
 }
 
+[sub_resource type="Animation" id="Animation_tuyoq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Geo_Trout:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Geo_Trout:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.087500095, 0.3280368, 0.04385376)]
+}
+
 [sub_resource type="Animation" id="Animation_qlg0r"]
 resource_name = "shoot"
 length = 0.6
@@ -178,33 +205,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-0.087500095, 0.3280368, 0.04385376), Vector3(-0.087500095, 0.3280368, 0.04385376), Vector3(-1.533, 1.148, 0.044), Vector3(-0.087500095, 0.3280368, 0.04385376)]
-}
-
-[sub_resource type="Animation" id="Animation_tuyoq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Geo_Trout:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Geo_Trout:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.087500095, 0.3280368, 0.04385376)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tuyoq"]
@@ -283,7 +283,7 @@ libraries = {
 }
 
 [node name="Slingshot" parent="neck/head" instance=ExtResource("2_g2els")]
-transform = Transform3D(-0.07289419, -0.12804659, 0.3718743, 0, 0.37820742, 0.13022725, -0.39330196, 0.023732027, -0.06892281, 0.14500001, -0.3, -0.615)
+transform = Transform3D(-0.07289419, -0.12804657, 0.37187427, 0, 0.3782074, 0.13022725, -0.39330196, 0.023732025, -0.06892281, 0.14500001, -0.3, -0.615)
 
 [node name="Slingshot_Anim" type="AnimationPlayer" parent="neck/head/Slingshot"]
 libraries = {
@@ -291,7 +291,7 @@ libraries = {
 }
 
 [node name="RayCast3D2" type="RayCast3D" parent="neck/head/Slingshot"]
-transform = Transform3D(-1.1920928e-07, 3.911554e-08, -2.499998, -0.7932618, 2.3708093, 4.470349e-08, 2.3708086, 0.79326147, -1.1920929e-07, 0.64006567, 0.33132386, 0.041440725)
+transform = Transform3D(-0.4341039, 0.0037884752, -2.462017, -0.7808971, 2.370701, 0.14133573, 2.3348985, 0.79357487, -0.41046873, 0.64006567, 0.3313234, 0.041440725)
 target_position = Vector3(0, 0, -1)
 
 [node name="Geo_Trout" type="MeshInstance3D" parent="neck/head/Slingshot"]

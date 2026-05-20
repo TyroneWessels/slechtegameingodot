@@ -37,7 +37,7 @@ var instance
 var slide_timer = 0.0
 var slide_timer_max = 1.0
 var slide_vector = Vector2.ZERO
-var slide_speed = 10.0
+var slide_speed = 12.0
 
 # Head bobbing vars
 
