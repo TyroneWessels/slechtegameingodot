@@ -1,9 +1,9 @@
 extends Node3D
 
-@onready var ray_cast_3d: RayCast3D = $Geo_Trout/RayCast3D
-@onready var ray_cast_3d_2: RayCast3D = $Geo_Trout/RayCast3D2
-@onready var ray_cast_3d_3: RayCast3D = $Geo_Trout/RayCast3D3
-
+@onready var geo_trout: MeshInstance3D = $Armature/Skeleton3D/Geo_Trout_146
+@onready var ray_cast_3d: RayCast3D = $Armature/Skeleton3D/RayCast3D
+@onready var ray_cast_3d_2: RayCast3D = $Armature/Skeleton3D/RayCast3D2
+@onready var ray_cast_3d_3: RayCast3D = $Armature/Skeleton3D/RayCast3D3
 
 const SPEED = 30.0
 var gravity = -9.8

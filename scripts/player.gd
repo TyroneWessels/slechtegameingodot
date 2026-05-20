@@ -188,7 +188,7 @@ func _physics_process(delta: float) -> void:
 			animation_player.play("landing")
 	
 	# shooting
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot"):
 		if !slingshot_anim.is_playing():
 			slingshot_anim.play("shoot")
 			await get_tree().create_timer(0.333333).timeout
