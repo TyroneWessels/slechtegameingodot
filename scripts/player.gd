@@ -10,6 +10,9 @@ extends CharacterBody3D
 @onready var camera_3d: Camera3D = $neck/head/eyes/Camera3D
 @onready var animation_player: AnimationPlayer = $neck/head/eyes/AnimationPlayer
 @onready var slingshot_anim: AnimationPlayer = $neck/head/Slingshot/Slingshot_Anim
+@onready var joint_anim: AnimationPlayer = $neck/head/eyes/Camera3D/Joint_anim
+@onready var geo_trout: MeshInstance3D = $neck/head/Slingshot/Geo_Trout
+@onready var ray_cast_slingshot: RayCast3D = $neck/head/Slingshot/RayCast3D2
 
 
 # Speed Variables
@@ -26,11 +29,20 @@ var crouching = false
 var free_looking = false
 var sliding = false
 
+#smoking states
+var smoking = false
+var puffs = 0
+
+#Slingshot vars/states
+var ammo = 1
+var bullet = load("res://scenes/trout_bullet.tscn")
+var instance
+
 #Slide Variables
 var slide_timer = 0.0
 var slide_timer_max = 1.0
 var slide_vector = Vector2.ZERO
-var slide_speed = 10.0
+var slide_speed = 12.0
 
 # Head bobbing vars
 
@@ -104,6 +116,7 @@ func _physics_process(delta: float) -> void:
 	elif !ray_cast_3d.is_colliding():
 		standing_collison_shape.disabled = false
 		crouching_collison_shape.disabled = true
+
 		
 		head.position.y = lerp(head.position.y,0.0,delta*lerp_speed)
 		# Sprint Logic
@@ -132,6 +145,21 @@ func _physics_process(delta: float) -> void:
 		free_looking = false
 		neck.rotation.y = lerp(neck.rotation.y,0.0,delta*lerp_speed)
 		eyes.rotation.z = lerp(eyes.rotation.z,0.0,delta*lerp_speed)
+	
+	# handle joint
+	if Input.is_action_just_pressed("light_joint"):
+		if !joint_anim.is_playing() and !smoking and !slingshot_anim.is_playing():
+			smoking = true
+			joint_anim.play("Spark_up")
+		elif !joint_anim.is_playing() and smoking and !slingshot_anim.is_playing():
+			if puffs < 5 and smoking:
+				if !joint_anim.is_playing() or !slingshot_anim.is_playing():
+					joint_anim.play("puff")
+					puffs += 1
+			else:
+				joint_anim.play("flick_away")
+				smoking = false
+				puffs = 0
 	
 	#Handle Sliding
 	if sliding:
@@ -178,10 +206,16 @@ func _physics_process(delta: float) -> void:
 			animation_player.play("roll")
 		elif last_velocity.y < -4.0:
 			animation_player.play("landing")
-			
-	if Input.is_action_pressed("shoot"):
-		if !slingshot_anim.is_playing():
+	
+	# shooting
+	if Input.is_action_just_pressed("shoot"):
+		if !slingshot_anim.is_playing() and !joint_anim.is_playing():
 			slingshot_anim.play("shoot")
+			await get_tree().create_timer(0.333333).timeout
+			instance = bullet.instantiate()
+			instance.position = ray_cast_slingshot.global_position
+			instance.transform.basis = ray_cast_slingshot.global_transform.basis
+			get_parent().add_child(instance)
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
