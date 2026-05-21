@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cy4n6hf164kp1"]
 
 [ext_resource type="PackedScene" uid="uid://5jdpkxcp15a7" path="res://models/Crack Alley/retro_rusty_trash_can_ps1.glb" id="1_k1lxp"]
+[ext_resource type="PackedScene" uid="uid://d4m8spqlbof8g" path="res://scenes/player.tscn" id="2_3ti6u"]
 
 [sub_resource type="Environment" id="Environment_3ti6u"]
 
@@ -10,13 +11,14 @@
 
 [node name="Map1" type="Node3D" unique_id=1714016717]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=101837306]
+transform = Transform3D(0.21813099, 0.5091471, -0.8325792, 0.44005144, 0.7101575, 0.54957354, 0.87107605, -0.48625672, -0.06914352, -1.065152, 9.608847, -0.23993391)
+shadow_enabled = true
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=100647358]
 environment = SubResource("Environment_3ti6u")
 camera_attributes = SubResource("CameraAttributesPractical_v7ld6")
 compositor = SubResource("Compositor_x0ugi")
-
-[node name="Sketchfab_Scene" parent="." unique_id=125387249 instance=ExtResource("1_k1lxp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.92984, 0.057687342, 1.8881942)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=737163328]
 use_collision = true
@@ -32,3 +34,9 @@ size = Vector3(27.47263, 7.564972, 0.09591675)
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1882023118]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3590183, 3.6262083, -2.6352108)
 size = Vector3(27.578037, 7.3473663, 0.09591675)
+
+[node name="Prullenbak" parent="CSGCombiner3D" unique_id=125387249 instance=ExtResource("1_k1lxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.92984, 0.057687342, 1.8881942)
+
+[node name="Player" parent="." unique_id=98970197 instance=ExtResource("2_3ti6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0265646, 0.034360886, -0.94105744)
