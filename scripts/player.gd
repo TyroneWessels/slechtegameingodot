@@ -13,7 +13,11 @@ extends CharacterBody3D
 @onready var joint_anim: AnimationPlayer = $neck/head/eyes/Camera3D/Joint_anim
 @onready var geo_trout: MeshInstance3D = $neck/head/Slingshot/Geo_Trout
 @onready var ray_cast_slingshot: RayCast3D = $neck/head/Slingshot/RayCast3D2
-
+@onready var joint: Node3D = $neck/head/eyes/Camera3D/Joint
+@onready var joint_lit: Node3D = $neck/head/eyes/Camera3D/Joint_lit
+@onready var gpu_particles_3d: GPUParticles3D = $neck/head/eyes/Camera3D/Joint_lit/GPUParticles3D
+@onready var lighter: Node3D = $neck/head/eyes/Camera3D/lighter
+@onready var lighter_fire: Node3D = $neck/head/eyes/Camera3D/lighter/Lighter_fire
 
 # Speed Variables
 var current_speed = 5.0
@@ -76,6 +80,13 @@ const mouse_sens = 0.4
 
 # Mouse Lock
 func _ready():
+	# visibility at start
+	joint.visible = false
+	joint_lit.visible = false
+	gpu_particles_3d.visible = false
+	lighter.visible = false
+	lighter_fire.visible = false
+	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 # Looking
