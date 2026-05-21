@@ -1,13 +1,412 @@
-[gd_scene load_steps=17 format=4 uid="uid://d4m8spqlbof8g"]
+[gd_scene load_steps=32 format=4 uid="uid://d4m8spqlbof8g"]
 
 [ext_resource type="Script" uid="uid://dv3cydtd8u3ew" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="PackedScene" uid="uid://ne0uvt8slqx2" path="res://models/joints/cannabis_joint.glb" id="2_dqkch"]
 [ext_resource type="PackedScene" uid="uid://be4ldamk6oor3" path="res://models/Slingshot.glb" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://btasyuvpv4wfe" path="res://models/Trout_Tex_Trout.png" id="3_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://m74eoflpolp4" path="res://models/joints/cannabis_joint_lit.glb" id="3_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://babyycatvnkel" path="res://textures/ciggysmoke.png" id="4_smehm"]
+[ext_resource type="PackedScene" uid="uid://dj3yebuhg55f1" path="res://models/Lighter/low_poly_lighter_-_willaces_cheesery_reborn.glb" id="4_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://srw52b027e64" path="res://lighter_fire.tscn" id="5_fjrip"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2els"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qhqgy"]
 height = 1.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ur7pv"]
+transparency = 1
+albedo_texture = ExtResource("4_smehm")
+emission_enabled = true
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="Gradient" id="Gradient_y4r1p"]
+offsets = PackedFloat32Array(0, 0.48427674, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ba523"]
+gradient = SubResource("Gradient_y4r1p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d2wvv"]
+lifetime_randomness = 0.6
+emission_shape_scale = Vector3(0.2, 0.2, 0.2)
+gravity = Vector3(0, 2, 0)
+scale_min = 0.0
+scale_max = 0.14999999
+color_ramp = SubResource("GradientTexture1D_ba523")
+
+[sub_resource type="QuadMesh" id="QuadMesh_3v2ag"]
+
+[sub_resource type="Animation" id="Animation_fjrip"]
+resource_name = "Spark_up"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Joint:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.405, -0.29, -0.3), Vector3(-0.255, -0.19499993, -0.3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Joint:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.57595867, -2.3125613, 0.44505897), Vector3(-0.1832596, -2.8012536, 0.445059)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Joint_lit:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.145, -0.25, -0.365)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Joint_lit:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.1832596, -2.8012536, 0.44505903)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Joint_lit:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Joint:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.2666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("lighter:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.53333336, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("lighter:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.53333336, 0.8, 1.2666667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.5, -0.65, -0.44999996), Vector3(-0.29, -0.31, -0.57), Vector3(-0.29, -0.31, -0.57), Vector3(-0.5, -0.65, -0.44999996)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("lighter:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.53333336, 0.8, 1.2666667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 7.4505806e-08, 0), Vector3(-0.2443461, -1.3526301, -0.3926991), Vector3(-0.2443461, -1.3526301, -0.3926991), Vector3(0, 7.4505806e-08, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("lighter/Lighter_fire:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.8666667, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Joint_lit/GPUParticles3D:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_smehm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Joint:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.255, -0.19499993, -0.3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Joint:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.1832596, -2.8012536, 0.445059)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Joint_lit:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.145, -0.25, -0.365)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Joint_lit:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.1832596, -2.8012536, 0.44505903)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Joint_lit:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Joint:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("lighter:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("lighter:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.5, -0.65, -0.44999996)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("lighter:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 7.4505806e-08, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("lighter/Lighter_fire:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Joint_lit/GPUParticles3D:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ur7pv"]
+resource_name = "flick_away"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Joint_lit:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.33333334, 0.43333334, 0.46666667, 0.6333333, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.145, -0.25, -0.365), Vector3(-0.29, -0.25, -0.605), Vector3(-0.29, -0.25, -0.605), Vector3(-0.235, -0.28, -0.605), Vector3(-0.235, -0.28, -0.605), Vector3(-0.745, -0.06, -0.74), Vector3(-1.055, -0.09, -0.74), Vector3(-4.59, -2.31, -2.65)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Joint_lit:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.33333334, 0.43333334, 0.46666667, 0.6333333, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.1832596, -2.8012536, 0.44505903), Vector3(0.16580628, -2.591814, 0.44505897), Vector3(0.16580628, -2.591814, 0.44505897), Vector3(0.5550147, -2.7209682, 0.44505897), Vector3(0.5550147, -2.7209682, 0.44505897), Vector3(0.5550147, -4.4488444, 0.061086524), Vector3(0.5550147, -5.984734, 0.061086524), Vector3(0.5550147, -7.8696895, 0.061086524)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Joint_lit:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Joint_lit/GPUParticles3D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_y4r1p"]
+resource_name = "puff"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Joint_lit:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.56666666, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.145, -0.25, -0.365), Vector3(-0.265, -0.25, -0.48), Vector3(-0.265, -0.25, -0.48), Vector3(-0.145, -0.25, -0.365)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Joint_lit:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.56666666, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.1832596, -2.8012536, 0.44505903), Vector3(-0.17453292, -2.5045474, 0.44505897), Vector3(-0.17453292, -2.5045474, 0.44505897), Vector3(-0.1832596, -2.8012536, 0.44505903)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Joint_lit/GPUParticles3D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ur7pv"]
+_data = {
+&"RESET": SubResource("Animation_smehm"),
+&"Spark_up": SubResource("Animation_fjrip"),
+&"flick_away": SubResource("Animation_ur7pv"),
+&"puff": SubResource("Animation_y4r1p")
+}
 
 [sub_resource type="Animation" id="Animation_g2els"]
 length = 0.001
@@ -192,7 +591,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.33333334, 0.5, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.087500095, 0.3280368, 0.04385376), Vector3(-0.087500095, 0.3280368, 0.04385376), Vector3(-1.533, 1.148, 0.044), Vector3(-0.087500095, 0.3280368, 0.04385376)]
+"values": [Vector3(-0.087500095, 0.3280368, 0.04385376), Vector3(-1.348, 0.328, 0.044), Vector3(-1.533, 1.148, 0.044), Vector3(-0.087500095, 0.3280368, 0.04385376)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -202,7 +601,7 @@ tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.33333334, 0.5027277),
-"transitions": PackedFloat32Array(1, 1, 1),
+"transitions": PackedFloat32Array(20882.393, 1, 1),
 "update": 0,
 "values": [true, false, Vector3(-1.533, 1.148, 0.044)]
 }
@@ -276,6 +675,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 [node name="eyes" type="Node3D" parent="neck/head"]
 
 [node name="Camera3D" type="Camera3D" parent="neck/head/eyes"]
+
+[node name="Joint" parent="neck/head/eyes/Camera3D" instance=ExtResource("2_dqkch")]
+transform = Transform3D(-0.8246258, 0.46072328, -0.32821712, 0.4233022, 0.8874714, 0.18223555, 0.37524346, 0.011341095, -0.92685694, -0.255, -0.19499993, -0.3)
+visible = false
+
+[node name="Joint_lit" parent="neck/head/eyes/Camera3D" instance=ExtResource("3_qlg0r")]
+transform = Transform3D(-0.8246258, 0.46072328, -0.32821712, 0.42330223, 0.8874714, 0.18223555, 0.37524348, 0.01134108, -0.92685694, -0.145, -0.25, -0.365)
+visible = false
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="neck/head/eyes/Camera3D/Joint_lit"]
+transform = Transform3D(-0.8246255, 0.04233019, 0.037524328, 0.4607232, 0.088747054, 0.0011341098, -0.3282171, 0.018223554, -0.092685655, 0.06743884, 0.0061323643, 0.19909441)
+material_override = SubResource("StandardMaterial3D_ur7pv")
+lifetime = 0.45
+speed_scale = 0.4
+process_material = SubResource("ParticleProcessMaterial_d2wvv")
+draw_pass_1 = SubResource("QuadMesh_3v2ag")
+
+[node name="lighter" parent="neck/head/eyes/Camera3D" instance=ExtResource("4_tuyoq")]
+transform = Transform3D(1, 0, 7.4505806e-08, 0, 1, 0, -7.4505806e-08, 0, 1, -0.5, -0.65, -0.44999996)
+
+[node name="Lighter_fire" parent="neck/head/eyes/Camera3D/lighter" instance=ExtResource("5_fjrip")]
+transform = Transform3D(1, 0, -2.9802322e-08, 2.9802322e-08, 1, 0, 0, -1.4901161e-08, 1, -0.0076292753, 0.09789002, 0.031033874)
+
+[node name="Joint_anim" type="AnimationPlayer" parent="neck/head/eyes/Camera3D"]
+libraries = {
+&"": SubResource("AnimationLibrary_ur7pv")
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="neck/head/eyes"]
 libraries = {

@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://srw52b027e64"]
+
+[ext_resource type="Texture2D" uid="uid://b8qm6e40tnycb" path="res://textures/gunsmoke.png" id="1_lueub"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lueub"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_lueub")
+emission_enabled = true
+emission = Color(0.9819934, 0.44419655, 0.10191221, 1)
+emission_energy_multiplier = 3.1
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="Gradient" id="Gradient_lueub"]
+offsets = PackedFloat32Array(0, 0.48427674, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ba523"]
+gradient = SubResource("Gradient_lueub")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2b2fa"]
+lifetime_randomness = 0.6
+emission_shape_scale = Vector3(0.2, 0.2, 0.2)
+gravity = Vector3(0, 2, 0)
+scale_min = 0.0
+scale_max = 0.14999999
+color_ramp = SubResource("GradientTexture1D_ba523")
+
+[sub_resource type="QuadMesh" id="QuadMesh_8ynuh"]
+
+[node name="Lighter_fire" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 0.099999964, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_lueub")
+lifetime = 0.45
+process_material = SubResource("ParticleProcessMaterial_2b2fa")
+draw_pass_1 = SubResource("QuadMesh_8ynuh")
