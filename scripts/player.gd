@@ -18,6 +18,8 @@ extends CharacterBody3D
 @onready var gpu_particles_3d: GPUParticles3D = $neck/head/eyes/Camera3D/Joint_lit/GPUParticles3D
 @onready var lighter: Node3D = $neck/head/eyes/Camera3D/lighter
 @onready var lighter_fire: Node3D = $neck/head/eyes/Camera3D/lighter/Lighter_fire
+@onready var gpu_particles_3d2: GPUParticles3D = $neck/head/eyes/Camera3D/GPUParticles3D
+
 
 # Speed Variables
 var current_speed = 5.0
@@ -85,7 +87,7 @@ func _ready():
 	# visibility at start
 	joint.visible = false
 	joint_lit.visible = false
-	gpu_particles_3d.visible = false
+	gpu_particles_3d2.visible = false
 	lighter.visible = false
 	lighter_fire.visible = false
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://d4m8spqlbof8g"]
+[gd_scene load_steps=34 format=4 uid="uid://d4m8spqlbof8g"]
 
 [ext_resource type="Script" uid="uid://dv3cydtd8u3ew" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://ne0uvt8slqx2" path="res://models/joints/cannabis_joint.glb" id="2_dqkch"]
@@ -31,7 +31,7 @@ gradient = SubResource("Gradient_y4r1p")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d2wvv"]
 lifetime_randomness = 0.6
 emission_shape_scale = Vector3(0.2, 0.2, 0.2)
-gravity = Vector3(0, 2, 0)
+gravity = Vector3(-0.005, 2, 0)
 scale_min = 0.0
 scale_max = 0.14999999
 color_ramp = SubResource("GradientTexture1D_ba523")
@@ -172,6 +172,42 @@ tracks/10/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Joint_lit/GPUParticles3D:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("GPUParticles3D:emitting")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("GPUParticles3D:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_fjrip"]
 resource_name = "Spark_up"
@@ -299,14 +335,38 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Joint_lit/GPUParticles3D:visible")
+tracks/10/path = NodePath("GPUParticles3D:emitting")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0, 1.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1.5333333, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [false, true]
+"values": [false, true, false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Joint_lit/GPUParticles3D:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("GPUParticles3D:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_ur7pv"]
@@ -351,7 +411,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Joint_lit/GPUParticles3D:visible")
+tracks/3/path = NodePath("Joint_lit/GPUParticles3D:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -359,6 +419,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GPUParticles3D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.73333335),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_y4r1p"]
@@ -399,6 +471,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GPUParticles3D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.73333335),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ur7pv"]
 _data = {
@@ -407,6 +491,20 @@ _data = {
 &"flick_away": SubResource("Animation_ur7pv"),
 &"puff": SubResource("Animation_y4r1p")
 }
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_smehm"]
+transparency = 1
+albedo_texture = ExtResource("4_smehm")
+emission_enabled = true
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ur7pv"]
+emission_shape_scale = Vector3(0.2, 0.2, 0.2)
+gravity = Vector3(0, 2, -0.985)
+scale_min = 0.0
+scale_max = 0.14999999
+color_ramp = SubResource("GradientTexture1D_ba523")
 
 [sub_resource type="Animation" id="Animation_g2els"]
 length = 0.001
@@ -702,6 +800,15 @@ transform = Transform3D(1, 0, -2.9802322e-08, 2.9802322e-08, 1, 0, 0, -1.4901161
 libraries = {
 &"": SubResource("AnimationLibrary_ur7pv")
 }
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="neck/head/eyes/Camera3D"]
+transform = Transform3D(-0.8246255, 0.04233019, 0.037524328, 0.4607232, 0.088747054, 0.0011341098, -0.3282171, 0.018223554, -0.092685655, -0.076, -0.198, -0.315)
+material_override = SubResource("StandardMaterial3D_smehm")
+amount = 15
+lifetime = 0.5
+speed_scale = 0.4
+process_material = SubResource("ParticleProcessMaterial_ur7pv")
+draw_pass_1 = SubResource("QuadMesh_3v2ag")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="neck/head/eyes"]
 libraries = {
