@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cy4n6hf164kp1"]
+[gd_scene load_steps=0 format=3 uid="uid://cy4n6hf164kp1"]
 
 [ext_resource type="PackedScene" uid="uid://5jdpkxcp15a7" path="res://models/Crack Alley/retro_rusty_trash_can_ps1.glb" id="1_k1lxp"]
 [ext_resource type="PackedScene" uid="uid://d4m8spqlbof8g" path="res://scenes/player.tscn" id="2_3ti6u"]
