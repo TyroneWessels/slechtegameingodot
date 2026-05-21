@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=3 uid="uid://cy4n6hf164kp1"]
+[gd_scene format=3 uid="uid://cy4n6hf164kp1"]
 
 [ext_resource type="PackedScene" uid="uid://5jdpkxcp15a7" path="res://models/Crack Alley/retro_rusty_trash_can_ps1.glb" id="1_k1lxp"]
 [ext_resource type="PackedScene" uid="uid://d4m8spqlbof8g" path="res://scenes/player.tscn" id="2_3ti6u"]
@@ -36,6 +36,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3590183, 3.6262083, -2.6352
 size = Vector3(27.578037, 7.3473663, 0.09591675)
 
 [node name="Prullenbak" parent="CSGCombiner3D" unique_id=125387249 instance=ExtResource("1_k1lxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.92984, 0.057687342, 1.8881942)
+
+[node name="Prullenbak2" parent="CSGCombiner3D" unique_id=1433296604 instance=ExtResource("1_k1lxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6381264, 0.04856783, 1.1413898)
+
+[node name="Prullenbak3" parent="CSGCombiner3D" unique_id=1840127436 instance=ExtResource("1_k1lxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.115626, -0.01189816, -1.2261751)
+
+[node name="Prullenbak4" parent="CSGCombiner3D" unique_id=1283583364 instance=ExtResource("1_k1lxp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.92984, 0.057687342, 1.8881942)
 
 [node name="Player" parent="." unique_id=98970197 instance=ExtResource("2_3ti6u")]
