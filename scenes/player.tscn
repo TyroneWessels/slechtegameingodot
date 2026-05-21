@@ -709,7 +709,7 @@ libraries = {
 }
 
 [node name="Slingshot" parent="neck/head" instance=ExtResource("2_g2els")]
-transform = Transform3D(-0.07289419, -0.12804657, 0.37187427, 0, 0.3782074, 0.13022725, -0.39330196, 0.023732025, -0.06892281, 0.14500001, -0.3, -0.615)
+transform = Transform3D(-1.7484556e-08, -0.12692185, 0.37932944, 0, 0.37932944, 0.12692185, -0.4, 5.54793e-09, -1.6581017e-08, 0.375, -0.29999995, -0.535)
 
 [node name="Slingshot_Anim" type="AnimationPlayer" parent="neck/head/Slingshot"]
 libraries = {
@@ -717,7 +717,7 @@ libraries = {
 }
 
 [node name="RayCast3D2" type="RayCast3D" parent="neck/head/Slingshot"]
-transform = Transform3D(-0.44253755, 0.0038620483, -2.460515, -0.78040814, 2.370696, 0.14408156, 2.3334782, 0.7935873, -0.41844323, 0.64006567, 0.33132195, 0.041440964)
+transform = Transform3D(-0.35160616, 0.0030685146, -2.475147, -0.7851716, 2.3707378, 0.11447609, 2.3473125, 0.7934665, -0.3324627, 0.64006567, 0.33132148, 0.041440964)
 target_position = Vector3(0, 0, -1)
 
 [node name="Geo_Trout" type="MeshInstance3D" parent="neck/head/Slingshot"]
