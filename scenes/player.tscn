@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://m74eoflpolp4" path="res://models/joints/cannabis_joint_lit.glb" id="3_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://babyycatvnkel" path="res://textures/ciggysmoke.png" id="4_smehm"]
 [ext_resource type="PackedScene" uid="uid://dj3yebuhg55f1" path="res://models/Lighter/low_poly_lighter_-_willaces_cheesery_reborn.glb" id="4_tuyoq"]
-[ext_resource type="PackedScene" uid="uid://srw52b027e64" path="res://lighter_fire.tscn" id="5_fjrip"]
+[ext_resource type="PackedScene" uid="uid://srw52b027e64" path="res://scenes/lighter_fire.tscn" id="5_fjrip"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2els"]
 

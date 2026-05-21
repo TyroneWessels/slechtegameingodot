@@ -80,6 +80,8 @@ const mouse_sens = 0.4
 
 # Mouse Lock
 func _ready():
+	add_to_group("player")
+	
 	# visibility at start
 	joint.visible = false
 	joint_lit.visible = false

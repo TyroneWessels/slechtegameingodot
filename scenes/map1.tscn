@@ -1,51 +1,71 @@
-[gd_scene format=3 uid="uid://cy4n6hf164kp1"]
+[gd_scene load_steps=8 format=3 uid="uid://ct3y4apweu30u"]
 
 [ext_resource type="PackedScene" uid="uid://5jdpkxcp15a7" path="res://models/Crack Alley/retro_rusty_trash_can_ps1.glb" id="1_k1lxp"]
-[ext_resource type="PackedScene" uid="uid://d4m8spqlbof8g" path="res://scenes/player.tscn" id="2_3ti6u"]
+[ext_resource type="PackedScene" uid="uid://chwwesw1q4424" path="res://scenes/ChangeArea.tscn" id="2_3ti6u"]
+[ext_resource type="PackedScene" uid="uid://d4m8spqlbof8g" path="res://scenes/player.tscn" id="3_v7ld6"]
 
-[sub_resource type="Environment" id="Environment_3ti6u"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3ti6u"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_v7ld6"]
+[sub_resource type="Sky" id="Sky_0bbpv"]
+sky_material = SubResource("ProceduralSkyMaterial_3ti6u")
 
-[sub_resource type="Compositor" id="Compositor_x0ugi"]
+[sub_resource type="Environment" id="Environment_v7ld6"]
+background_mode = 2
+sky = SubResource("Sky_0bbpv")
+tonemap_mode = 2
+glow_enabled = true
 
-[node name="Map1" type="Node3D" unique_id=1714016717]
+[sub_resource type="BoxShape3D" id="BoxShape3D_v7ld6"]
+size = Vector3(1.6674805, 1, 1.9143066)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=101837306]
+[node name="Map1" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_v7ld6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.21813099, 0.5091471, -0.8325792, 0.44005144, 0.7101575, 0.54957354, 0.87107605, -0.48625672, -0.06914352, -1.065152, 9.608847, -0.23993391)
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=100647358]
-environment = SubResource("Environment_3ti6u")
-camera_attributes = SubResource("CameraAttributesPractical_v7ld6")
-compositor = SubResource("Compositor_x0ugi")
-
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=737163328]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=2146749063]
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4543767, -0.0066388845, -0.050667793)
 size = Vector3(27.427444, 0.082, 5.09)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=528024464]
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.462375, 3.7391105, 2.397907)
 size = Vector3(27.47263, 7.564972, 0.09591675)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1882023118]
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3590183, 3.6262083, -2.6352108)
 size = Vector3(27.578037, 7.3473663, 0.09591675)
 
-[node name="Prullenbak" parent="CSGCombiner3D" unique_id=125387249 instance=ExtResource("1_k1lxp")]
+[node name="Prullenbak" parent="CSGCombiner3D" instance=ExtResource("1_k1lxp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.92984, 0.057687342, 1.8881942)
 
-[node name="Prullenbak2" parent="CSGCombiner3D" unique_id=1433296604 instance=ExtResource("1_k1lxp")]
+[node name="Prullenbak2" parent="CSGCombiner3D" instance=ExtResource("1_k1lxp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6381264, 0.04856783, 1.1413898)
 
-[node name="Prullenbak3" parent="CSGCombiner3D" unique_id=1840127436 instance=ExtResource("1_k1lxp")]
+[node name="Prullenbak3" parent="CSGCombiner3D" instance=ExtResource("1_k1lxp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.115626, -0.01189816, -1.2261751)
 
-[node name="Prullenbak4" parent="CSGCombiner3D" unique_id=1283583364 instance=ExtResource("1_k1lxp")]
+[node name="Prullenbak4" parent="CSGCombiner3D" instance=ExtResource("1_k1lxp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.92984, 0.057687342, 1.8881942)
 
-[node name="Player" parent="." unique_id=98970197 instance=ExtResource("2_3ti6u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0265646, 0.034360886, -0.94105744)
+[node name="ChangeArea" parent="." instance=ExtResource("2_3ti6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.96259, 0.42614245, -0.49355412)
+currentAreaType = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ChangeArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33374023, 0, 0.13513184)
+shape = SubResource("BoxShape3D_v7ld6")
+
+[node name="Marker3D" type="Marker3D" parent="ChangeArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.010881, -0.32867277, 0.68669724)
+
+[node name="Player" parent="." instance=ExtResource("3_v7ld6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7731285, 0.034360886, -0.16453505)

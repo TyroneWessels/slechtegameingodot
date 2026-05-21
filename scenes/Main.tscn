@@ -1,19 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://bl3ukhslinubo"]
+[gd_scene load_steps=7 format=3 uid="uid://bl3ukhslinubo"]
 
 [ext_resource type="PackedScene" uid="uid://d4m8spqlbof8g" path="res://scenes/player.tscn" id="1_elqb8"]
+[ext_resource type="PackedScene" uid="uid://chwwesw1q4424" path="res://scenes/ChangeArea.tscn" id="2_rvslj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rvslj"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="Sky" id="Sky_0bbpv"]
+[sub_resource type="Sky" id="Sky_rvslj"]
 sky_material = SubResource("ProceduralSkyMaterial_rvslj")
 
 [sub_resource type="Environment" id="Environment_rarhs"]
 background_mode = 2
-sky = SubResource("Sky_0bbpv")
+sky = SubResource("Sky_rvslj")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0bbpv"]
+size = Vector3(1.6674805, 1, 1.9143066)
 
 [node name="World" type="Node3D"]
 
@@ -59,3 +63,14 @@ size = Vector3(20, 1, 5)
 transform = Transform3D(0.9525232, -0.30446514, 0, 0.30446514, 0.9525232, 0, 0, 0, 1, -18.892803, -3.2974901, -4.5)
 use_collision = true
 size = Vector3(19.1, 1, 5)
+
+[node name="ChangeArea" parent="." instance=ExtResource("2_rvslj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.870571, -9.536743e-07, 8.963187)
+changeAreaType = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ChangeArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.022589, 0, 0.13513184)
+shape = SubResource("BoxShape3D_0bbpv")
+
+[node name="Marker3D" type="Marker3D" parent="ChangeArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.677661, 0, -2.3692884)
