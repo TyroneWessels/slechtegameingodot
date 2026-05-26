@@ -24,4 +24,4 @@ func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		GameManager.change_area(currentAreaType)
 		
-		get_tree().change_scene_to_file(GameManager.areaDict[changeAreaType])
+		get_tree().call_deferred("change_scene_to_file", GameManager.areaDict[changeAreaType])
