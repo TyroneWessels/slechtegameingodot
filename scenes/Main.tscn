@@ -34,8 +34,13 @@ transform = Transform3D(7.4505806e-08, -1.0000001, 0, 1.0000001, 7.4505806e-08, 
 use_collision = true
 size = Vector3(12.5, 1, 26)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Stage/CSGBox3D2"]
-transform = Transform3D(7.450579e-08, 0.9999999, 0, -0.9999999, 7.450579e-08, 0, 0, 0, 1, -5.175, 0.024999857, 7.0750003)
+[node name="CSGBox3D9" type="CSGBox3D" parent="Stage/CSGBox3D2"]
+transform = Transform3D(7.450579e-08, 0.9999999, 0, -0.9999999, 7.450579e-08, 0, 0, 0, 1, -5.175, 0.025000572, 7.0750003)
+operation = 2
+size = Vector3(1.15, 2.15, 1.5500001)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Stage/CSGBox3D2"]
+transform = Transform3D(7.450579e-08, 0.9999999, 0, -0.9999999, 7.450579e-08, 0, 0, 0, 1, -5.175, 0.025000572, -3.9249992)
 operation = 2
 size = Vector3(1.15, 2.15, 1.5500001)
 
@@ -87,6 +92,24 @@ light_energy = 1.772
 omni_range = 15.544
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="Stage/ceiling_lamp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.425999, 0.04123974, 0)
+light_energy = 1.772
+omni_range = 15.544
+
+[node name="ceiling_lamp2" parent="Stage" instance=ExtResource("3_0bbpv")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 4.2351647e-22, 1, 0, -4.371139e-08, -4.1299996, 3.815, -11.03)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Stage/ceiling_lamp2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04123974, 0)
+light_energy = 1.772
+omni_range = 15.544
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Stage/ceiling_lamp2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41560942, 0.04123974, 0)
+light_energy = 1.772
+omni_range = 15.544
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Stage/ceiling_lamp2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.425999, 0.04123974, 0)
 light_energy = 1.772
 omni_range = 15.544
