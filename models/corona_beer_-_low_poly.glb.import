@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://6cql0ak0mt2w"
-path="res://.godot/imported/psx_style_office_walls_pack.glb-7e55d8c362201ab7301aae6561b4818f.scn"
+uid="uid://muejwhvagcgq"
+path="res://.godot/imported/corona_beer_-_low_poly.glb-a4911d9b8e128b011c184d48acae7caf.scn"
 
 [deps]
 
-source_file="res://textures/psx_style_office_walls_pack.glb"
-dest_files=["res://.godot/imported/psx_style_office_walls_pack.glb-7e55d8c362201ab7301aae6561b4818f.scn"]
+source_file="res://models/corona_beer_-_low_poly.glb"
+dest_files=["res://.godot/imported/corona_beer_-_low_poly.glb-a4911d9b8e128b011c184d48acae7caf.scn"]
 
 [params]
 
@@ -38,15 +38,12 @@ materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
 _subresources={
-"meshes": {
-"Sketchfab_Scene_Wall Small 2_Wallpaper_0": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": true,
-"save_to_file/fallback_path": "",
-"save_to_file/path": ""
+"nodes": {
+"PATH:Sketchfab_model/Root/Circle": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/Root/Circle_001": {
+"import/skip_import": true
 }
 }
 }
