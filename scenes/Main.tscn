@@ -186,12 +186,14 @@ omni_range = 15.544
 [node name="CSGBox3D9" type="CSGBox3D" parent="Stage" unique_id=717201662]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.865405, 1.7388618, 1.3905306)
 material_override = SubResource("StandardMaterial3D_mwfav")
+use_collision = true
 size = Vector3(0.001, 5.0751953, 40.02967)
 material = SubResource("StandardMaterial3D_3p2gp")
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="Stage" unique_id=915324186]
 transform = Transform3D(-0.012932476, 0, -0.99991643, 0, 1, 0, 0.99991643, 0, -0.012932476, -2.2861807, 1.466965, 9.271821)
 material_override = SubResource("StandardMaterial3D_cvmbd")
+use_collision = true
 size = Vector3(0.106933594, 5.0751953, 25.936295)
 material = SubResource("StandardMaterial3D_ft6cd")
 
