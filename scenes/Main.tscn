@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://chwwesw1q4424" path="res://scenes/ChangeArea.tscn" id="2_rvslj"]
 [ext_resource type="PackedScene" uid="uid://8g8h63vp4mha" path="res://scenes/ceiling_lamp.tscn" id="3_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://muejwhvagcgq" path="res://models/corona_beer_-_low_poly.glb" id="7_nxtc6"]
+[ext_resource type="PackedScene" uid="uid://cb80b8j0sttw" path="res://models/retro_marlboro_reds.glb" id="8_jlsqs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nxtc6"]
 albedo_texture = ExtResource("1_vcsgt")
@@ -226,3 +227,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9723396, 0, -2.9692883)
 
 [node name="Sketchfab_Scene" parent="." unique_id=892932849 instance=ExtResource("7_nxtc6")]
 transform = Transform3D(0.0471669, 0.0027393515, 0.04464055, -0.0028484245, 0.06493024, -0.00097479497, -0.04463372, -0.0012488797, 0.047236327, -7.0179663, 0.02487582, -14.625331)
+
+[node name="Sketchfab_Scene2" parent="." unique_id=1831676701 instance=ExtResource("8_jlsqs")]
+transform = Transform3D(5.098469, 0, 3.0962625, 0, 5.965, 0, -3.0962625, 0, 5.098469, -6.725874, 0.010742376, -14.74219)
