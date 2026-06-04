@@ -27,6 +27,8 @@ func _process(delta):
 			animation_player.play("runningPistol")
 
 func _physics_process(delta):
+	var current_location = global_transform.origin
+	var next_location = nav_agent.get_next_path_position()
 
 func update_target_location(target_location):
 	nav_agent.target_position = target_loc  
