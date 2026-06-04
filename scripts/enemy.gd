@@ -1,13 +1,13 @@
 extends CharacterBody3D
 
 enum {
-	idlePistol,
-	runningPistol,
-	walkingPistol,
+	IDLE,
+	ALERT
 }
 
-var state = idlePistol
+var state = IDLE
 
+@onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 
@@ -15,10 +15,18 @@ func _ready():
 	pass
 
 func _process(delta):
+	if ray_cast_3d.is_colliding():
+		state = ALERT
+	else:
+		state = IDLE
+	
 	match state:
-		idlePistol:
+		IDLE:
 			animation_player.play("idlePistol")
-		runningPistol:
+		ALERT:
 			animation_player.play("runningPistol")
-		walkingPistol:
-			animation_player.play("walkingPistol")
+
+func _physics_process(delta):
+
+func update_target_location(target_location):
+	nav_agent.target_position = target_loc  
