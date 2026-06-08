@@ -4,6 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://chwwesw1q4424" path="res://scenes/ChangeArea.tscn" id="2_3ti6u"]
 [ext_resource type="Texture2D" uid="uid://b65sd3woqeu2a" path="res://textures/weathered-brick-wall-texture_1154-734.png" id="2_wpo3d"]
 [ext_resource type="PackedScene" uid="uid://d4m8spqlbof8g" path="res://scenes/player.tscn" id="3_v7ld6"]
+[ext_resource type="PackedScene" uid="uid://5jdpkxcp15a7" path="res://models/Crack Alley/retro_rusty_trash_can_ps1.glb" id="5_p7jwj"]
+[ext_resource type="PackedScene" uid="uid://dj3yebuhg55f1" path="res://models/Lighter/low_poly_lighter_-_willaces_cheesery_reborn.glb" id="6_2m3eu"]
+[ext_resource type="PackedScene" uid="uid://srw52b027e64" path="res://scenes/lighter_fire.tscn" id="7_raiux"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3ti6u"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -48,8 +51,13 @@ shadow_enabled = true
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1792444184]
-transform = Transform3D(0.99999964, -0.00011462557, 0.0008286568, 0.00011969257, 0.9999813, -0.006121483, -0.0008279401, 0.00612158, 0.9999809, 41.795914, -0.0025284565, -0.07910054)
-size = Vector3(96.110535, 0.082, 5.09)
+transform = Transform3D(0.99999964, -0.00011462557, 0.0008286568, 0.00011969257, 0.9999813, -0.006121483, -0.0008279401, 0.00612158, 0.9999809, -0.294302, -0.007566344, -0.04425235)
+size = Vector3(11.930077, 0.082, 5.09)
+material = SubResource("StandardMaterial3D_uyy6q")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D" unique_id=514279892]
+transform = Transform3D(0.99999964, -0.00011462558, 0.0008286568, 0.000119703676, 0.9999813, -0.0061214836, -0.0008279403, 0.0061215796, 0.9999809, 48.02762, -0.004642436, -0.064040124)
+size = Vector3(84.16261, 0.082, 5.09)
 material = SubResource("StandardMaterial3D_uyy6q")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=326552215]
@@ -63,8 +71,8 @@ size = Vector3(96.26604, 7.3473663, 0.09591675)
 material = SubResource("StandardMaterial3D_2m3eu")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1467081695]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.180704, 3.701265, -0.2773056)
-size = Vector3(0.12207031, 7.631935, 5.276108)
+transform = Transform3D(1, 0, 0, 0, 0.002443506, -0.999997, 0, 0.999997, 0.002443506, -6.180704, 3.752862, -3.0042586)
+size = Vector3(0.12207031, 28.171412, 7.7506676)
 material = SubResource("StandardMaterial3D_raiux")
 
 [node name="ChangeArea" parent="." unique_id=1214392130 instance=ExtResource("2_3ti6u")]
@@ -80,3 +88,42 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.010881, -0.32867277, 0.68
 
 [node name="Player" parent="." unique_id=955943663 instance=ExtResource("3_v7ld6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.926234, 0.099184036, -0.26032865)
+
+[node name="Sketchfab_Scene" parent="." unique_id=125387249 instance=ExtResource("5_p7jwj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.865257, 0.049469694, -1.6368178)
+
+[node name="Sketchfab_Scene2" parent="." unique_id=1144173695 instance=ExtResource("5_p7jwj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.563597, 0.018841963, 1.1268307)
+
+[node name="Sketchfab_Scene3" parent="." unique_id=686375789 instance=ExtResource("5_p7jwj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.061546, 0.061837416, -1.8446716)
+
+[node name="Sketchfab_Scene4" parent="." unique_id=597005855 instance=ExtResource("5_p7jwj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.60435, 0.034335356, 0.9974772)
+
+[node name="Sketchfab_Scene5" parent="." unique_id=1731955135 instance=ExtResource("6_2m3eu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.801265, 0.71487343, -1.6483468)
+
+[node name="Lighter_fire" parent="." unique_id=2112825546 instance=ExtResource("7_raiux")]
+transform = Transform3D(7.87, 0, 0, 0, 7.87, -1.3760344e-06, 0, 1.3760344e-06, 7.87, -4.0984006, 0.7536061, -1.5801829)
+
+[node name="Lighter_fire2" parent="." unique_id=514384443 instance=ExtResource("7_raiux")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0613, 0.7213409, -1.7340475)
+
+[node name="Lighter_fire3" parent="." unique_id=907670280 instance=ExtResource("7_raiux")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.052962, 0.7196171, -1.5931238)
+
+[node name="Lighter_fire4" parent="." unique_id=1385329833 instance=ExtResource("7_raiux")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.095814, 0.72001195, -1.626161)
+
+[node name="Lighter_fire5" parent="." unique_id=652348403 instance=ExtResource("7_raiux")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1178985, 0.7208662, -1.6963199)
+
+[node name="Lighter_fire6" parent="." unique_id=1823275248 instance=ExtResource("7_raiux")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9971843, 0.7193744, -1.5722555)
+
+[node name="Lighter_fire7" parent="." unique_id=866114964 instance=ExtResource("7_raiux")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0731034, 0.72057676, -1.6718439)
+
+[node name="Lighter_fire8" parent="." unique_id=651254307 instance=ExtResource("7_raiux")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9882169, 0.7206874, -1.6793326)
