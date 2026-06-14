@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://8g8h63vp4mha" path="res://scenes/ceiling_lamp.tscn" id="3_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://muejwhvagcgq" path="res://models/corona_beer_-_low_poly.glb" id="7_nxtc6"]
 [ext_resource type="PackedScene" uid="uid://cb80b8j0sttw" path="res://models/retro_marlboro_reds.glb" id="8_jlsqs"]
+[ext_resource type="PackedScene" uid="uid://yfneqdgbwst3" path="res://scenes/Enemy.tscn" id="9_q8u5g"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jlsqs"]
 vertices = PackedVector3Array(-15.500977, 0.4293673, -15.124306, -15.500977, 0.4293673, 8.375694, 9.249023, 0.4293673, 8.625694, 9.249023, 0.4293673, -15.374306)
@@ -278,3 +279,6 @@ transform = Transform3D(0.0471669, 0.0027393515, 0.04464055, -0.0028484245, 0.06
 
 [node name="Sketchfab_Scene2" parent="." unique_id=1831676701 instance=ExtResource("8_jlsqs")]
 transform = Transform3D(5.098469, 0, 3.0962625, 0, 5.965, 0, -3.0962625, 0, 5.098469, -6.725874, 0.010742376, -14.74219)
+
+[node name="CharacterBody3D" parent="." unique_id=1320907145 instance=ExtResource("9_q8u5g")]
+transform = Transform3D(-0.981896, 0, 0.18942098, 0, 1, 0, -0.18942098, 0, -0.981896, 6.577945, -0.0008648522, -11.89732)

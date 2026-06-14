@@ -5425,11 +5425,14 @@ _data = {
 radius = 0.3076172
 height = 1.695426
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_5wwv6"]
+radius = 10.0
+
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=1320907145]
 script = ExtResource("1_c4w8v")
 
 [node name="Armature" type="Node3D" parent="." unique_id=312762138]
-transform = Transform3D(0.01, 0, 0, 0, 0, -0.01, 0, 0.01, 0, 0, 0, 0)
+transform = Transform3D(-0.01, -8.7422775e-10, 0, 0, 0, -0.01, 8.7422775e-10, -0.01, 0, 0, 0, 0)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Armature" unique_id=1521779889]
 bones/0/name = "mixamorig_Hips"
@@ -5904,11 +5907,24 @@ transform = Transform3D(-0.40259892, 9.983034, -0.42065695, -9.845075, -0.468236
 libraries/ = SubResource("AnimationLibrary_hb8ge")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2046303603]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.8529634, 0.07756579)
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 0.9999999, 0, 8.742277e-08, 0, -0.9999999, 0, 0.8529634, 0.07756579)
 shape = SubResource("CapsuleShape3D_e1ltt")
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1610402212]
-transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 1.5095414, 0)
+transform = Transform3D(-1, -7.642742e-15, 8.742278e-08, 0, -1, -8.742278e-08, 8.742278e-08, -8.742278e-08, 1, 0, 1.5095414, 0)
 target_position = Vector3(0, 0, -10)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1615646462]
+
+[node name="Sightrange" type="Area3D" parent="." unique_id=248751949]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sightrange" unique_id=1018595343]
+shape = SubResource("SphereShape3D_5wwv6")
+
+[node name="Eyes" type="Node3D" parent="." unique_id=245930592]
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=285641377]
+
+[connection signal="body_entered" from="Sightrange" to="." method="_on_sightrange_body_entered"]
+[connection signal="body_exited" from="Sightrange" to="." method="_on_sightrange_body_exited"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
