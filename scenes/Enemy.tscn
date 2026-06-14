@@ -5923,5 +5923,8 @@ shape = SubResource("SphereShape3D_5wwv6")
 
 [node name="Eyes" type="Node3D" parent="." unique_id=245930592]
 
+[node name="ShootTimer" type="Timer" parent="." unique_id=285641377]
+
 [connection signal="body_entered" from="Sightrange" to="." method="_on_sightrange_body_entered"]
 [connection signal="body_exited" from="Sightrange" to="." method="_on_sightrange_body_exited"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

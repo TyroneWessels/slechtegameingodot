@@ -20,6 +20,8 @@ extends CharacterBody3D
 @onready var lighter_fire: Node3D = $neck/head/eyes/Camera3D/lighter/Lighter_fire
 @onready var gpu_particles_3d2: GPUParticles3D = $neck/head/eyes/Camera3D/GPUParticles3D
 
+#health Vars
+var health = 5
 
 # Speed Variables
 var current_speed = 5.0
@@ -92,6 +94,18 @@ func _ready():
 	lighter_fire.visible = false
 	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+func hurt(hit_points):
+	if hit_points < health:
+		health -= hit_points
+	else:
+		health = 0
+	if health == 0:
+		
+		die()
+
+func die():
+	print("died")
 
 # Looking
 func _input(event):

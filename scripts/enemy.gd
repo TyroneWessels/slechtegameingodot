@@ -15,6 +15,7 @@ const TURN_SPEED = 2
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 @onready var eyes: Node3D = $Eyes
+@onready var shoot_timer: Timer = $ShootTimer
 
 func _ready():
 	pass
@@ -23,10 +24,19 @@ func _on_sightrange_body_entered(body: CharacterBody3D):
 	if body.is_in_group("Player"):
 		state = ALERT
 		target = body
+		shoot_timer.start()
 
 func _on_sightrange_body_exited(body: CharacterBody3D):
 	state = IDLE
+	shoot_timer.stop()
 
+func _on_shoot_timer_timeout():
+	if ray_cast_3d.is_colliding():
+		var hit = ray_cast_3d.get_collider()
+		if hit.is_in_group("Player"):
+			get_tree().call_group("Player", "hurt", 2)
+			print("hit")
+	
 func _process(delta):
 	
 	match state:
