@@ -106,6 +106,7 @@ func hurt(hit_points):
 
 func die():
 	print("died")
+	get_tree().reload_current_scene()
 
 # Looking
 func _input(event):

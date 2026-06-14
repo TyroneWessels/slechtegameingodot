@@ -5,6 +5,8 @@ enum {
 	ALERT
 }
 
+var health = 1
+
 var state = IDLE
 
 var target
@@ -16,6 +18,7 @@ const TURN_SPEED = 2
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 @onready var eyes: Node3D = $Eyes
 @onready var shoot_timer: Timer = $ShootTimer
+@onready var animation_player_gun: AnimationPlayer = $Armature/Skeleton3D/BoneAttachment3D/Sketchfab_Scene/AnimationPlayer
 
 func _ready():
 	pass
@@ -34,9 +37,21 @@ func _on_shoot_timer_timeout():
 	if ray_cast_3d.is_colliding():
 		var hit = ray_cast_3d.get_collider()
 		if hit.is_in_group("Player"):
+			animation_player_gun.play("shoot")
 			get_tree().call_group("Player", "hurt", 2)
 			print("hit")
-	
+
+func hurt(hit_points):
+	if hit_points < health:
+		health -= hit_points
+	else:
+		health = 0
+	if health == 0:
+		die()
+
+func die():
+	animation_player.play("Dying")
+
 func _process(delta):
 	
 	match state:
