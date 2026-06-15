@@ -1,5 +1,6 @@
 extends Node3D
 
+@onready var ray_cast_3d: RayCast3D = $Geo_Trout/RayCast3D2
 
 const SPEED = 30.0
 var gravity = -9.8
@@ -18,4 +19,8 @@ func _process(delta: float) -> void:
 	velocity.y += gravity * delta  # Apply gravity over time
 	translate(velocity * delta)
 	
+	if ray_cast_3d.is_colliding():
 		queue_free()
+		var hit = ray_cast_3d.get_collider()
+		if hit.is_in_group("Enemy"):
+			get_tree().call_group("Enemy", "hurt", 2)
