@@ -98,7 +98,7 @@ func hurt(hit_points):
 		die()
 
 func die():
-<<<<<<< HEAD
+	
 	# Stop the player from running physics so it stops triggering collisions
 	set_physics_process(false)
 	
@@ -106,10 +106,10 @@ func die():
 	var main_tree = Engine.get_main_loop() as SceneTree
 	if main_tree:
 		main_tree.call_deferred("reload_current_scene")
-=======
+
 	print("died")
 	get_tree().reload_current_scene()
->>>>>>> fe0fa6bde9c05f6b9edea6b4229654e4cbc3b043
+
 
 func _input(event):
 	if event is InputEventMouseMotion:
