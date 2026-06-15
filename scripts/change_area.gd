@@ -10,9 +10,15 @@ func _ready() -> void:
 		_set_player_position()
 
 func _set_player_position():
+	# Wait one frame to ensure everything in the new scene is initialized
 	await get_tree().process_frame
 	
 	var player = get_tree().get_first_node_in_group("player")
+	
+	# Safety guard: prevents the 'null instance' crash if player doesn't exist yet
+	if not player:
+		print("CRITICAL: Player node not found! Check your capitalization in player.gd's add_to_group().")
+		return
 	
 	var targetPosition = player.global_position - global_position.direction_to($Marker3D.global_position)
 	targetPosition.y = player.global_position.y
