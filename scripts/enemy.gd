@@ -1,6 +1,5 @@
 extends CharacterBody3D
 
-
 enum { IDLE, ALERT }
 
 var state = IDLE
@@ -18,6 +17,9 @@ var health = 100
 @onready var eyes: Node3D = $Eyes
 @onready var shoot_timer: Timer = $ShootTimer
 @onready var animation_player_gun: AnimationPlayer = $Armature/Skeleton3D/BoneAttachment3D/Sketchfab_Scene/AnimationPlayer
+
+# Adjust this to half your player capsule height so the raycast aims at center mass
+const PLAYER_CENTER_OFFSET = 0.9
 
 func _ready():
 	await get_tree().process_frame
@@ -78,7 +80,8 @@ func _on_shoot_timer_timeout():
 			var b = bullet_scene.instantiate()
 			get_tree().current_scene.add_child(b)
 			b.global_transform.origin = eyes.global_transform.origin
-			b.direction = (target.global_transform.origin - eyes.global_transform.origin).normalized()
+			var target_center = target.global_transform.origin + Vector3(0, PLAYER_CENTER_OFFSET, 0)
+			b.direction = (target_center - eyes.global_transform.origin).normalized()
 
 func _physics_process(delta):
 	match state:
@@ -94,6 +97,7 @@ func _physics_process(delta):
 
 			animation_player.play("runningPistol")
 
+			# Rotate body to face player smoothly
 			var target_dir = (target.global_transform.origin - global_transform.origin)
 			target_dir.y = 0
 			if target_dir.length_squared() > 0.001:
@@ -101,10 +105,13 @@ func _physics_process(delta):
 				var target_angle = atan2(target_dir.x, target_dir.z) + PI
 				rotation.y = lerp_angle(rotation.y, target_angle, delta * TURN_SPEED)
 
-			eyes.look_at(target.global_transform.origin, Vector3.UP)
-			var target_local = ray_cast_3d.to_local(target.global_transform.origin)
+			# Aim eyes and raycast at player center mass, not feet
+			var target_center = target.global_transform.origin + Vector3(0, PLAYER_CENTER_OFFSET, 0)
+			eyes.look_at(target_center, Vector3.UP)
+			var target_local = ray_cast_3d.to_local(target_center)
 			ray_cast_3d.target_position = target_local
 
+			# Movement via Navigation Agent
 			if not navigation_agent_3d.is_navigation_finished():
 				var next_pos = navigation_agent_3d.get_next_path_position()
 				var move_dir = (next_pos - global_transform.origin)
