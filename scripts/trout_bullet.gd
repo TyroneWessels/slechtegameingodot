@@ -22,5 +22,6 @@ func _process(delta: float) -> void:
 	if ray_cast_3d.is_colliding():
 		queue_free()
 		var hit = ray_cast_3d.get_collider()
+		print("collide")
 		if hit.is_in_group("Enemy"):
 			get_tree().call_group("Enemy", "hurt", 2)

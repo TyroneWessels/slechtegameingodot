@@ -38,6 +38,8 @@ func take_damage(amount):
 	health -= amount
 	print("Enemy hit! Health: ", health)
 	if health <= 0:
+		animation_player.stop()
+		animation_player.play("Dying")
 		die()
 
 func die():
