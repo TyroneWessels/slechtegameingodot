@@ -107,13 +107,12 @@ func _input(event):
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 
 func _physics_process(delta: float) -> void:
-	# Find HUD on first frame so it has time to load
+	# Find HUD on first frame
 	if not hud_found:
 		hud = get_tree().get_first_node_in_group("hud")
 		if hud:
 			hud_found = true
 			hud.update_health(health, MAX_HEALTH)
-			print("HUD found and connected!")
 
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 
@@ -223,10 +222,20 @@ func _physics_process(delta: float) -> void:
 		if !slingshot_anim.is_playing() and !joint_anim.is_playing():
 			slingshot_anim.play("shoot")
 			await get_tree().create_timer(0.333333).timeout
-			if ray_cast_slingshot.is_colliding():
-				var hit = ray_cast_slingshot.get_collider()
-				if hit.has_method("take_damage"):
-					hit.take_damage(25)
+			var space_state = get_world_3d().direct_space_state
+			var from = camera_3d.global_position
+			var to = from + (-camera_3d.global_transform.basis.z * 1000.0)
+			var query = PhysicsRayQueryParameters3D.create(from, to)
+			query.exclude = [self]
+			var result = space_state.intersect_ray(query)
+			if result:
+				print("Hit: ", result.collider.name, " groups: ", result.collider.get_groups())
+				if result.collider.has_method("take_damage"):
+					result.collider.take_damage(25)
+					print("Damage dealt!")
+				elif result.collider.get_parent().has_method("take_damage"):
+					result.collider.get_parent().take_damage(25)
+					print("Damage dealt to parent!")
 			instance = bullet.instantiate()
 			instance.position = ray_cast_slingshot.global_position
 			instance.transform.basis = ray_cast_slingshot.global_transform.basis

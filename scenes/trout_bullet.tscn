@@ -6,9 +6,10 @@
 [node name="Trout" unique_id=1762227933 instance=ExtResource("1_ckm6s")]
 script = ExtResource("2_f34nh")
 
-[node name="Geo_Trout" parent="." index="0" unique_id=1208759475]
+[node name="Geo_Trout" parent="." index="0" unique_id=1526416840]
 transform = Transform3D(-0.01, 0, -8.7422775e-10, 0, 0.01, 0, 8.7422775e-10, 0, -0.01, 0, 0, 0)
 
 [node name="RayCast3D2" type="RayCast3D" parent="Geo_Trout" index="0" unique_id=911472306]
 transform = Transform3D(-100, 0, 8.742274e-06, 0, 100, 0, -8.742274e-06, 0, -100, 1.7484554e-06, 0, -20)
 target_position = Vector3(0, 0, -0.55)
+collision_mask = 3
