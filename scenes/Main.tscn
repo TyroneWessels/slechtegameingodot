@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://muejwhvagcgq" path="res://models/corona_beer_-_low_poly.glb" id="7_nxtc6"]
 [ext_resource type="PackedScene" uid="uid://cb80b8j0sttw" path="res://models/retro_marlboro_reds.glb" id="8_jlsqs"]
 [ext_resource type="PackedScene" uid="uid://yfneqdgbwst3" path="res://scenes/Enemy.tscn" id="9_q8u5g"]
+[ext_resource type="Script" uid="uid://byskhh5o5ls21" path="res://scripts/Hud.gd" id="10_lhr70"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jlsqs"]
 vertices = PackedVector3Array(-15.500977, 0.4293673, -15.124306, -15.500977, 0.4293673, 8.375694, 9.249023, 0.4293673, 8.625694, 9.249023, 0.4293673, -15.374306)
@@ -282,3 +283,27 @@ transform = Transform3D(5.098469, 0, 3.0962625, 0, 5.965, 0, -3.0962625, 0, 5.09
 
 [node name="CharacterBody3D" parent="." unique_id=1320907145 instance=ExtResource("9_q8u5g")]
 transform = Transform3D(-0.981896, 0, 0.18942098, 0, 1, 0, -0.18942098, 0, -0.981896, 6.577945, -0.0008648522, -11.89732)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=239731735]
+layer = 2
+script = ExtResource("10_lhr70")
+
+[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer" unique_id=519403292]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = -32.0
+offset_right = 54.0
+offset_bottom = 8.0
+grow_vertical = 0
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/BoxContainer" unique_id=618579235]
+custom_minimum_size = Vector2(66.75, 0.46)
+layout_mode = 2
+min_value = 100.015
+max_value = 101.275
+value = 101.275
+
+[node name="HealthLabel" type="VBoxContainer" parent="CanvasLayer/BoxContainer" unique_id=1408085393]
+layout_mode = 2

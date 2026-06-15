@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://n8r2m7vdujo7"]
+
+[ext_resource type="Script" uid="uid://d00psqdwt5lol" path="res://scripts/Enemy_Bullet.gd" id="1_rpp37"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gs7fg"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_rpp37"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2s13c"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="EnemyBullet" type="CharacterBody3D" unique_id=1885440350]
+script = ExtResource("1_rpp37")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1288556416]
+transform = Transform3D(0.010000001, 0, 0, 0, 0.010000001, 0, 0, 0, 0.010000001, 0, 0, 0)
+shape = SubResource("SphereShape3D_gs7fg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=852299930]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_rpp37")
+surface_material_override/0 = SubResource("StandardMaterial3D_2s13c")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=950634216]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

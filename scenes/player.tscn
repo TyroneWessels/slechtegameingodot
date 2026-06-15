@@ -820,6 +820,7 @@ libraries/ = SubResource("AnimationLibrary_tuyoq")
 [node name="RayCast3D2" type="RayCast3D" parent="neck/head/Slingshot" unique_id=1055160606]
 transform = Transform3D(-0.35160616, 0.0030685146, -2.475147, -0.7851716, 2.3707378, 0.11447609, 2.3473125, 0.7934665, -0.3324627, 0.64006567, 0.33132148, 0.041440964)
 target_position = Vector3(0, 0, -1)
+collision_mask = 2
 
 [node name="Geo_Trout" type="MeshInstance3D" parent="neck/head/Slingshot" unique_id=1367913499]
 transform = Transform3D(-1.0927844e-09, -3.4694466e-17, 0.024999997, 0.0079326155, 0.02370809, 3.467456e-10, -0.02370809, 0.0079326155, -1.0363136e-09, -0.087500095, 0.3280368, 0.04385376)

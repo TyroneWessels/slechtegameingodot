@@ -5429,6 +5429,7 @@ height = 1.695426
 radius = 10.0
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=1320907145]
+collision_layer = 2
 script = ExtResource("1_c4w8v")
 
 [node name="Armature" type="Node3D" parent="." unique_id=312762138]
