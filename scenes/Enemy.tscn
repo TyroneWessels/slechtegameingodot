@@ -5490,8 +5490,8 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e1ltt"]
-radius = 0.3076172
-height = 1.695426
+radius = 0.4873047
+height = 1.9014239
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5wwv6"]
 radius = 10.0
@@ -5990,7 +5990,7 @@ libraries/ = SubResource("AnimationLibrary_axa8o")
 libraries/ = SubResource("AnimationLibrary_hb8ge")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2046303603]
-transform = Transform3D(-1, 0, -8.742277e-08, 0, 0.9999999, 0, 8.742277e-08, 0, -0.9999999, 0, 0.8529634, 0.07756579)
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 0.9999999, 0, 8.742277e-08, 0, -0.9999999, 0, 0.95596236, 0.07756579)
 shape = SubResource("CapsuleShape3D_e1ltt")
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1610402212]
