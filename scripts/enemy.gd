@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-enum { IDLE, ALERT }
+enum { IDLE, ALERT, DEAD }
 
 var state = IDLE
 var target: CharacterBody3D = null
@@ -17,6 +17,7 @@ var health = 100
 @onready var eyes: Node3D = $Eyes
 @onready var shoot_timer: Timer = $ShootTimer
 @onready var animation_player_gun: AnimationPlayer = $Armature/Skeleton3D/BoneAttachment3D/Sketchfab_Scene/AnimationPlayer
+@onready var sightrange: Area3D = $Sightrange
 
 # Adjust this to half your player capsule height so the raycast aims at center mass
 const PLAYER_CENTER_OFFSET = 0.9
@@ -40,6 +41,7 @@ func take_damage(amount):
 	health -= amount
 	print("Enemy hit! Health: ", health)
 	if health <= 0:
+		state = DEAD
 		animation_player.stop()
 		animation_player.play("Dying")
 		die()
@@ -85,6 +87,8 @@ func _on_shoot_timer_timeout():
 
 func _physics_process(delta):
 	match state:
+		DEAD:
+			sightrange.set_deferred("monitorable", false)
 		IDLE:
 			animation_player.play("idlePistol")
 			velocity = velocity.move_toward(Vector3.ZERO, MOVE_SPEED * delta)
