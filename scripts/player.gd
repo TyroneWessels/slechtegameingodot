@@ -93,6 +93,12 @@ func hurt(hit_points):
 	if health == 0:
 		die()
 
+func heal(amount):
+	health = clamp(health + amount, 0, MAX_HEALTH)
+	if hud:
+		hud.update_health(health, MAX_HEALTH)
+	print("Healed! Health is now: ", health)
+
 func die():
 	get_tree().reload_current_scene()
 
@@ -157,7 +163,7 @@ func _physics_process(delta: float) -> void:
 		neck.rotation.y = lerp(neck.rotation.y, 0.0, delta * lerp_speed)
 		eyes.rotation.z = lerp(eyes.rotation.z, 0.0, delta * lerp_speed)
 
-	# Joint
+	# Joint / Smoking Logic
 	if Input.is_action_just_pressed("light_joint"):
 		if !joint_anim.is_playing() and !smoking and !slingshot_anim.is_playing():
 			smoking = true
@@ -167,6 +173,10 @@ func _physics_process(delta: float) -> void:
 				if !joint_anim.is_playing() or !slingshot_anim.is_playing():
 					joint_anim.play("puff")
 					puffs += 1
+					
+					# Wait for 0.4 seconds so the player heals mid-puff visual rather than instantly
+					await get_tree().create_timer(0.4).timeout
+					heal(10)
 			else:
 				joint_anim.play("flick_away")
 				smoking = false

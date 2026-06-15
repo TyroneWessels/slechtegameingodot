@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://8g8h63vp4mha" path="res://scenes/ceiling_lamp.tscn" id="3_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://muejwhvagcgq" path="res://models/corona_beer_-_low_poly.glb" id="7_nxtc6"]
 [ext_resource type="PackedScene" uid="uid://cb80b8j0sttw" path="res://models/retro_marlboro_reds.glb" id="8_jlsqs"]
-[ext_resource type="PackedScene" uid="uid://csy3fj2ctifwp" path="res://scenes/Enemy.tscn" id="9_q8u5g"]
+[ext_resource type="PackedScene" uid="uid://yfneqdgbwst3" path="res://scenes/Enemy.tscn" id="9_q8u5g"]
 [ext_resource type="Script" uid="uid://byskhh5o5ls21" path="res://scripts/Hud.gd" id="10_lhr70"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jlsqs"]
