@@ -288,13 +288,13 @@ transform = Transform3D(-0.981896, 0, 0.18942098, 0, 1, 0, -0.18942098, 0, -0.98
 layer = 2
 script = ExtResource("10_lhr70")
 
-[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer" unique_id=519403292]
+[node name="BoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1187415330]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 14.0
 offset_top = -32.0
-offset_right = 54.0
+offset_right = 84.0
 offset_bottom = 8.0
 grow_vertical = 0
 
@@ -305,5 +305,5 @@ min_value = 100.015
 max_value = 101.275
 value = 101.275
 
-[node name="HealthLabel" type="VBoxContainer" parent="CanvasLayer/BoxContainer" unique_id=1408085393]
+[node name="HealthLabel" type="Label" parent="CanvasLayer/BoxContainer" unique_id=1341338302]
 layout_mode = 2

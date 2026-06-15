@@ -23,7 +23,8 @@ extends CharacterBody3D
 # Health
 const MAX_HEALTH = 100
 var health = MAX_HEALTH
-var hud
+var hud = null
+var hud_found = false
 
 # Speed Variables
 var current_speed = 5.0
@@ -84,32 +85,16 @@ func _ready():
 	lighter.visible = false
 	lighter_fire.visible = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	hud = get_tree().get_first_node_in_group("hud")
-	if hud:
-		hud.update_health(health, MAX_HEALTH)
-	else:
-		print("HUD not found!")
 
 func hurt(hit_points):
 	health = clamp(health - hit_points, 0, MAX_HEALTH)
 	if hud:
 		hud.update_health(health, MAX_HEALTH)
-	if health <= 0:
+	if health == 0:
 		die()
 
 func die():
-	
-	# Stop the player from running physics so it stops triggering collisions
-	set_physics_process(false)
-	
-	# Go directly to the main engine window to force a safe reload
-	var main_tree = Engine.get_main_loop() as SceneTree
-	if main_tree:
-		main_tree.call_deferred("reload_current_scene")
-
-	print("died")
 	get_tree().reload_current_scene()
-
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -122,6 +107,14 @@ func _input(event):
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 
 func _physics_process(delta: float) -> void:
+	# Find HUD on first frame so it has time to load
+	if not hud_found:
+		hud = get_tree().get_first_node_in_group("hud")
+		if hud:
+			hud_found = true
+			hud.update_health(health, MAX_HEALTH)
+			print("HUD found and connected!")
+
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 
 	# Crouching
@@ -230,18 +223,15 @@ func _physics_process(delta: float) -> void:
 		if !slingshot_anim.is_playing() and !joint_anim.is_playing():
 			slingshot_anim.play("shoot")
 			await get_tree().create_timer(0.333333).timeout
-			
-			# Check if the player node tree environment is still valid after the await timer
-			if is_inside_tree() and ray_cast_slingshot.is_colliding():
+			if ray_cast_slingshot.is_colliding():
 				var hit = ray_cast_slingshot.get_collider()
-				if hit and hit.has_method("take_damage"):
-					hit.take_damage(20) # FIX: Set to 20 damage per shot
-			
-			if is_inside_tree():
-				instance = bullet.instantiate()
-				instance.position = ray_cast_slingshot.global_position
-				instance.transform.basis = ray_cast_slingshot.global_transform.basis
-				get_parent().add_child(instance)
+				if hit.has_method("take_damage"):
+					hit.take_damage(25)
+			instance = bullet.instantiate()
+			instance.position = ray_cast_slingshot.global_position
+			instance.transform.basis = ray_cast_slingshot.global_transform.basis
+			get_parent().add_child(instance)
+
 	# Movement
 	if is_on_floor():
 		direction = lerp(direction, (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta * lerp_speed)
