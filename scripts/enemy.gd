@@ -1,6 +1,16 @@
 extends CharacterBody3D
 
+<<<<<<< HEAD
 enum { IDLE, ALERT }
+=======
+enum {
+	IDLE,
+	ALERT
+}
+
+var health = 1
+
+>>>>>>> fe0fa6bde9c05f6b9edea6b4229654e4cbc3b043
 var state = IDLE
 var target: CharacterBody3D = null
 
@@ -16,6 +26,7 @@ var health = 100
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 @onready var eyes: Node3D = $Eyes
 @onready var shoot_timer: Timer = $ShootTimer
+@onready var animation_player_gun: AnimationPlayer = $Armature/Skeleton3D/BoneAttachment3D/Sketchfab_Scene/AnimationPlayer
 
 func _ready():
 	# Wait a single frame to make absolutely sure all child nodes exist
@@ -73,6 +84,7 @@ func _on_shoot_timer_timeout():
 	
 	if ray_cast_3d.is_colliding():
 		var hit = ray_cast_3d.get_collider()
+<<<<<<< HEAD
 		if hit and hit.is_in_group("Player"):
 			var b = bullet_scene.instantiate()
 			# Best practice to add child to the current scene tree root branch, not absolute root
@@ -81,6 +93,26 @@ func _on_shoot_timer_timeout():
 			b.direction = (target.global_transform.origin - eyes.global_transform.origin).normalized()
 
 func _physics_process(delta):
+=======
+		if hit.is_in_group("Player"):
+			animation_player_gun.play("shoot")
+			get_tree().call_group("Player", "hurt", 2)
+			print("hit")
+
+func hurt(hit_points):
+	if hit_points < health:
+		health -= hit_points
+	else:
+		health = 0
+	if health == 0:
+		die()
+
+func die():
+	animation_player.play("Dying")
+
+func _process(delta):
+	
+>>>>>>> fe0fa6bde9c05f6b9edea6b4229654e4cbc3b043
 	match state:
 		IDLE:
 			animation_player.play("idlePistol")

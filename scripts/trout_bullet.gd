@@ -1,9 +1,5 @@
 extends Node3D
 
-@onready var ray_cast_3d: RayCast3D = $Geo_Trout/RayCast3D
-@onready var ray_cast_3d_2: RayCast3D = $Geo_Trout/RayCast3D2
-@onready var ray_cast_3d_3: RayCast3D = $Geo_Trout/RayCast3D3
-
 
 const SPEED = 30.0
 var gravity = -9.8
@@ -22,5 +18,4 @@ func _process(delta: float) -> void:
 	velocity.y += gravity * delta  # Apply gravity over time
 	translate(velocity * delta)
 	
-	if ray_cast_3d.is_colliding() or ray_cast_3d_2.is_colliding() or ray_cast_3d_3.is_colliding():
 		queue_free()
