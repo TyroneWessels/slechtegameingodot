@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bvgaksylaaj5b"]
+
+[ext_resource type="Script" uid="uid://byskhh5o5ls21" path="res://scripts/Hud.gd" id="1_wfueu"]
+
+[node name="Hud" type="CanvasLayer" unique_id=1900068369]
+script = ExtResource("1_wfueu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=99330990]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="HealthLabel" type="Label" parent="VBoxContainer" unique_id=1056510821]
+layout_mode = 2
+
+[node name="HealthBar" type="ProgressBar" parent="VBoxContainer" unique_id=1480003023]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+min_value = 100.57
+max_value = 100.57
+value = 100.57
+show_percentage = false
